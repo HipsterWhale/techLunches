@@ -1,0 +1,14 @@
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: <%= ENV['TECHLUNCHES_DATABASE_DBHOST'] %>
+  database: <%= ENV['TECHLUNCHES_DATABASE_DBNAME'] %>
+  username: <%= ENV['TECHLUNCHES_DATABASE_USERNAME'] %>
+  password: <%= ENV['TECHLUNCHES_DATABASE_PASSWORD'] %>
