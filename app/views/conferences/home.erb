@@ -1,0 +1,14 @@
+<% @conferences.each do |conference| %>
+    <h4><%= conference.event_date.strftime('Le %d/%m/%Y à %R') %></h4>
+    <div class="event_item row">
+      <div class="col-sm-6 col-xs-12 event_title">
+        <a href="/conferences/<%= conference.id %>"><%= conference.title %></a>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <strong>Nombre de places</strong> : <%= conference.sits == 0 ? 'Inscriptions non-ouvertes' : "#{conference.taken_sits} / #{conference.sits}" %>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <strong>Intervenant</strong> : <%= conference.speaker %>
+      </div>
+    </div>
+<% end %>

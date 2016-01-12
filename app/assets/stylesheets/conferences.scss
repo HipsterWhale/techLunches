@@ -1,0 +1,53 @@
+.event_item {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #CCC;
+  padding: 4px;
+  border-radius: 5px;
+  background-color: #EEE;
+  .event_title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+#event_flyer {
+  min-height: 600px;
+  #flyer {
+    background-color: #EFEFEF;
+    margin: 5px;
+    height: 590px;
+    #tl_logo {
+      padding-top: 40px;
+      text-align: center;
+      img {
+        max-width: 300px;
+      }
+    }
+    h1 {
+      padding-top: 20px;
+      color: #111;
+    }
+    h2{
+      color: #333;
+    }
+    h1, h2, h3 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .speaker {
+      text-align: center;
+      padding-top: 10px;
+    }
+  }
+  margin-bottom: 15px;
+}
+
+#event_meta {
+  h6 {
+    text-decoration: underline;
+  }
+  #event_desc {
+    text-align: justify;
+  }
+}

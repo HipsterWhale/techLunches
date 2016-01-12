@@ -7,8 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container">
+  <% if params[:controller] != 'login' %>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/conferences/home">tech'Lunches</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="/conferences/home"><%= fa_icon 'calendar' %>&nbsp;Calendrier</a></li>
+              <li><a href="/conferences/feedback"><%= fa_icon 'comment' %>&nbsp;Feedback</a></li>
+              <li><a href="/suggestions/home"><%= fa_icon 'thumbs-up' %>&nbsp;Suggestions</a></li>
+              <% if @logged_user.is_admin %>
+              <li><a href="/backoffice/home"><%= fa_icon 'cog' %>&nbsp;Back office</a></li>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/logout"><%= fa_icon 'sign-out' %>&nbsp;Déconnexion</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  <% end %>
+  <%= yield %>
+</div>
 </body>
 </html>

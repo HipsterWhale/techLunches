@@ -1,0 +1,35 @@
+<div id="event_flyer" class="col-xs-12 col-sm-6">
+  <div id="flyer">
+    <div id="tl_logo">
+      <%= image_tag 'logo.png' %>
+      <br>
+      <h1><%= @conference.title %></h1>
+      <h2><%= @conference.subtitle %></h2>
+      <div class="speaker">Par <%= @conference.speaker %></div>
+    </div>
+  </div>
+</div>
+
+<div id="event_meta" class="col-xs-12 col-sm-6">
+  <h3><%= @conference.title %></h3>
+  <h4><%= @conference.subtitle %></h4>
+  <h5>Par <%= @conference.speaker %></h5>
+  <h6>Description : </h6>
+  <p id="event_desc">
+    <%= @conference.description %>
+  </p>
+  <h6>Places</h6>
+  <span style="color: #666; font-size: 12px;">Places restantes : <%= @conference.sits - @conference.taken_sits %>/<%= @conference.sits %></span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-success" style="width: <%= (@conference.taken_sits.to_f/@conference.sits.to_f*100).round %>%">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+  <div style="text-align: right;">
+      <% if @conference.reservations.where(user: @logged_user).count == 0 %>
+        <a class="btn btn-success" href="/conferences/<%= @conference.id %>/toggle_attend">Participer</a>
+    <% else %>
+        <a class="btn btn-danger" href="/conferences//<%= @conference.id %>/toggle_attend">Ne plus participer</a>
+    <% end %>
+  </div>
+</div>
