@@ -1,0 +1,29 @@
+<h2>Suggestions d'idées</h2>
+
+<% if params[:success] %>
+    <div class="alert alert-success" role="alert">
+      Merci pour votre suggestion !
+    </div>
+<% end %>
+
+<div class="row">
+  <h4>Faire une suggestion :</h4>
+  <%= form_tag '/suggestions/new', method: :post do %>
+      <input type="text" name="suggestion_name" class="form-control" />
+      <div style="text-align: right; margin-top: 3px;">
+        <button class="btn btn-success">Proposer</button>
+      </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <h4>Toutes les suggestions :</h4>
+  <ul class="col-xs-12" id="topic_suggestions">
+    <% @suggestions.each do |suggestion| %>
+    <li class="col-xs-12">
+      <span class="suggestion_point"><%= suggestion.points %></span> -
+      <a href="/suggestions/<%= suggestion.id %>"><%= suggestion.name %></a>
+    </li>
+    <% end %>
+  </ul>
+</div>

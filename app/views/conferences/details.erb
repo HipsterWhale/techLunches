@@ -26,7 +26,7 @@
     </div>
   </div>
   <div style="text-align: right;">
-      <% if @conference.reservations.where(user: @logged_user).count == 0 %>
+    <% if @conference.reservations.where(user: @logged_user).count == 0 %>
         <a class="btn btn-success" href="/conferences/<%= @conference.id %>/toggle_attend">Participer</a>
     <% else %>
         <a class="btn btn-danger" href="/conferences//<%= @conference.id %>/toggle_attend">Ne plus participer</a>

@@ -5,9 +5,9 @@ class ConferencesController < ApplicationController
   end
 
   def details
-    @conference = Conference.find_by_id(params[:id])
+    @conference = Conference.find_by_id params[:id]
     unless @conference
-      raise ActionController::RoutingError.new('Not Found')
+      raise ActionController::RoutingError.new 'Not Found'
     end
   end
 

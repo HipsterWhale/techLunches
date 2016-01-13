@@ -1,0 +1,13 @@
+<div style="text-align: center">
+  <h1><%= @suggestion.name %></h1>
+  <hr />
+  <% if @suggestion.likes.where(user: @logged_user).count == 0 %>
+  <a href="/suggestions/<%= @suggestion.id %>/toggle_like" class="btn btn-success">
+    <%= fa_icon 'thumbs-up' %>&nbsp;&nbsp;L'idée d'une conférence sur ce thème me plait !
+  </a>
+  <% else %>
+  <a href="/suggestions/<%= @suggestion.id %>/toggle_like" class="btn btn-danger">
+    <%= fa_icon 'thumbs-down' %>&nbsp;&nbsp;L'idée d'une conférence sur ce thème ne me plait plus !
+  </a>
+  <% end %>
+</div>

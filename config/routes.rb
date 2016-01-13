@@ -13,4 +13,11 @@ Rails.application.routes.draw do
   get '/conferences/:id', to: 'conferences#details'
   get '/conferences/:id/toggle_attend', to: 'conferences#toggle_attend'
 
+  get '/suggestions/home', to: 'suggestions#home'
+  post '/suggestions/new', to: 'suggestions#new'
+  get '/suggestions/:id', to: 'suggestions#details'
+  get '/suggestions/:id/toggle_like', to: 'suggestions#toggle_like'
+
+  get '/backoffice/home', to: 'backoffice#home'
+
 end

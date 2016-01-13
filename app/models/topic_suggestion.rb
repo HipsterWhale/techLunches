@@ -5,4 +5,8 @@ class TopicSuggestion < ActiveRecord::Base
 
   validates_presence_of :name, message: 'Merci d\'entrer un nom à votre suggestion.'
 
+  def points
+    likes.count
+  end
+
 end
