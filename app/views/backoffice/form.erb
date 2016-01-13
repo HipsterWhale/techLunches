@@ -1,7 +1,5 @@
 <div id="backoff_edit">
-  <%
-     form_url = params[:action] == 'edit' ? "#{@conference.id}/post" : '/backoffice/new_conference/post/'
-  %>
+  <% form_url = params[:action] == 'edit' ? "#{@conference.id}/post" : '/backoffice/new_conference/post/' %>
   <% if @error %>
     <div class="alert alert-danger">Please check fields...</div>
   <% end %>

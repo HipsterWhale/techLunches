@@ -1,0 +1,12 @@
+<h4>Feedbacks</h4>
+<h5><%= @conference.title %></h5>
+
+<% @conference.reservations.each do |reservation| %>
+    <% if reservation.feedback %>
+        <div class="col-xs-12">
+          <span class="color: #AAA;"><%= reservation.user.first_name %> <%= reservation.user.last_name %></span>
+          <p><%= reservation.feedback %></p>
+          <hr />
+        </div>
+    <% end %>
+<% end %>

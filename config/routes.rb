@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   post '/backoffice/new_conference/post', to: 'backoffice#create'
   get '/backoffice/edit/:id', to: 'backoffice#edit'
   post 'backoffice/edit/:id/post', to: 'backoffice#update'
+  get '/backoffice/feedbacks/:id', to: 'backoffice#feedbacks'
 
 end

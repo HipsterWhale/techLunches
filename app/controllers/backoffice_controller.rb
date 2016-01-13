@@ -18,6 +18,10 @@ class BackofficeController < ApplicationController
     render 'backoffice/form'
   end
 
+  def feedbacks
+    @conference = Conference.find(params[:id])
+  end
+
   def create
     begin
       @conference = Conference.create(params.require(:conference).permit(:title, :subtitle, :speaker, :event_date, :description, :sits))
