@@ -1,0 +1,28 @@
+<h3>Editer les conférences</h3>
+<div style="text-align: right">
+  <a class="btn btn-success" href="/backoffice/new_conference">Nouvelle conférence</a>
+</div>
+
+<table class="table table-bordered table-striped" style="margin-top: 6px;">
+  <thead>
+    <tr>
+      <th>#ID</th>
+      <th>Titre</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Conference.all.order(event_date: :desc).each do |conference| %>
+    <tr>
+      <td><%= conference.id %></td>
+      <td><%= conference.title %></td>
+      <td><%= conference.event_date.strftime('Le %d/%m/%Y à %R') %></td>
+      <td>
+        <a class="btn btn-warning" href="/backoffice/edit/<%= conference.id %>"><%= fa_icon 'edit' %>&nbsp;Editer</a>
+        <a class="btn btn-primary" href="/backoffice/feedbacks/<%= conference.id %>"><%= fa_icon 'comment' %>&nbsp;Feedbacks</a>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

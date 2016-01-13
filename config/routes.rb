@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   get '/suggestions/:id/toggle_like', to: 'suggestions#toggle_like'
 
   get '/backoffice/home', to: 'backoffice#home'
+  get '/backoffice/new_conference', to: 'backoffice#new_conference'
+  post '/backoffice/new_conference/post', to: 'backoffice#create'
+  get '/backoffice/edit/:id', to: 'backoffice#edit'
+  post 'backoffice/edit/:id/post', to: 'backoffice#update'
 
 end

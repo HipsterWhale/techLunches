@@ -1,0 +1,26 @@
+<div id="backoff_edit">
+  <%
+     form_url = params[:action] == 'edit' ? "#{@conference.id}/post" : '/backoffice/new_conference/post/'
+  %>
+  <% if @error %>
+    <div class="alert alert-danger">Please check fields...</div>
+  <% end %>
+  <%= form_for @conference, url: form_url, method: :post do |f| %>
+      <label>Titre : </label>
+      <%= f.text_field :title, class: 'form-control' %>
+      <label>Sous-titre : </label>
+      <%= f.text_field :subtitle, class: 'form-control' %>
+      <label>Intervenant : </label>
+      <%= f.text_field :speaker, class: 'form-control' %>
+      <label>Description : </label>
+      <%= f.text_area :description, class: 'form-control', style: 'height: 100px;' %>
+      <label>Date :</label>
+      <span style="color: #777;font-size: 11px;">(Format : YYYY-MM-DD HH:MM)</span>
+      <%= f.text_field :event_date, class: 'form-control' %>
+      <label>Places : </label>
+      <%= f.text_field :sits, class: 'form-control' %>
+      <div style="text-align: right; margin-top: 10px;">
+        <button class="btn btn-success" type="submit">Enregistrer</button>
+      </div>
+  <% end %>
+</div>
