@@ -1,0 +1,20 @@
+<% if @updated %>
+    <div class="alert alert-success" role="alert">
+      Merci pour votre feedback, il a été pris en compte.
+    </div>
+<% end %>
+
+<% if @reservation %>
+    <h3>Laissez un avis sur la dernière conférence !</h3>
+    <h4><%= @reservation.conference.title %></h4>
+    <%= form_tag '/conferences/feedback', method: :post do %>
+        <textarea name="feedback" class="form-control" style="height: 200px;"><%= @reservation.feedback %></textarea>
+        <div style="text-align: right;margin-top: 5px;">
+          <button type="submit" class="btn btn-success">Commenter</button>
+        </div>
+    <% end %>
+<% else %>
+  <div style="text-align: center">
+    <h1><%= fa_icon 'comment' %>&nbsp;Vous n'avez pas participé à une conférence dernièrement.</h1>
+  </div>
+<% end %>

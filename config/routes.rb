@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/conferences/home', to: 'conferences#home'
   get '/conferences/feedback', to: 'conferences#feedback'
+  post '/conferences/feedback', to: 'conferences#feedback_update'
   get '/conferences/:id', to: 'conferences#details'
   get '/conferences/:id/toggle_attend', to: 'conferences#toggle_attend'
 
