@@ -7,4 +7,8 @@ class Conference < ActiveRecord::Base
     users.count
   end
 
+  def free_sits
+    sits - taken_sits
+  end
+
 end

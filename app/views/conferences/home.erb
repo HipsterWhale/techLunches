@@ -5,7 +5,7 @@
         <a href="/conferences/<%= conference.id %>"><%= conference.title %></a>
       </div>
       <div class="col-sm-6 col-xs-12">
-        <strong>Nombre de places</strong> : <%= conference.sits == 0 ? 'Inscriptions non-ouvertes' : "#{conference.taken_sits} / #{conference.sits}" %>
+        <strong>Places restantes : </strong> : <%= conference.sits == 0 ? 'Inscriptions non-ouvertes' : "#{conference.free_sits} / #{conference.sits}" %>
       </div>
       <div class="col-sm-6 col-xs-12">
         <strong>Intervenant</strong> : <%= conference.speaker %>

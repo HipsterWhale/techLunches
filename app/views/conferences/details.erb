@@ -14,14 +14,21 @@
   <h3><%= @conference.title %></h3>
   <h4><%= @conference.subtitle %></h4>
   <h5>Par <%= @conference.speaker %></h5>
-  <h6>Description : </h6>
+  <h6>Description :</h6>
   <p id="event_desc">
     <%= @conference.description %>
   </p>
-  <h6>Places</h6>
-  <span style="color: #666; font-size: 12px;">Places restantes : <%= @conference.sits - @conference.taken_sits %>/<%= @conference.sits %></span>
+  <h6>Places :</h6>
+  <span style="color: #666; font-size: 12px;">Places restantes : <%= @conference.free_sits %>/<%= @conference.sits %></span>
   <div class="progress">
-    <div class="progress-bar progress-bar-success" style="width: <%= (@conference.taken_sits.to_f/@conference.sits.to_f*100).round %>%">
+    <%
+       percent = if @conference.sits > 0
+                  (@conference.taken_sits.to_f/@conference.sits.to_f*100).round
+                 else
+                   0
+                 end
+    %>
+    <div class="progress-bar progress-bar-success" style="width: <%= percent %>%">
       <span class="sr-only"></span>
     </div>
   </div>
