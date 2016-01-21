@@ -24,5 +24,10 @@ Rails.application.routes.draw do
   get '/backoffice/edit/:id', to: 'backoffice#edit'
   post 'backoffice/edit/:id/post', to: 'backoffice#update'
   get '/backoffice/feedbacks/:id', to: 'backoffice#feedbacks'
+  get '/backoffice/reservations/:id', to: 'backoffice#reservations'
+  get '/backoffice/reservations/delete/:id', to: 'backoffice#delete_reservation'
+  get '/backoffice/suggestions/delete/:id', to: 'backoffice#delete_suggestion'
+  post '/backoffice/admins/add', to: 'backoffice#add_admin'
+  get '/backoffice/admins/revoke/:id', to: 'backoffice#revoke_admin'
 
 end

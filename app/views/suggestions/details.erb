@@ -10,4 +10,8 @@
     <%= fa_icon 'thumbs-down' %>&nbsp;&nbsp;L'idée d'une conférence sur ce thème ne me plait plus !
   </a>
   <% end %>
+  <% if @logged_user.is_admin %>
+  <br><br>
+  <a  class="btn btn-danger" href="/backoffice/suggestions/delete/<%= @suggestion.id %>"><%= fa_icon 'trash' %>&nbsp;Supprimer suggestion</a>
+  <% end %>
 </div>

@@ -1,4 +1,47 @@
-<h3>Editer les conférences</h3>
+<% if params['success'] == '1' %>
+    <div class="alert alert-success">Action effectuée avec succès !</div>
+<% end %>
+
+<% if params['error'] == 'last_admin' %>
+    <div class="alert alert-danger">Impossible de supprimer le dernier admin !</div>
+<% end %>
+
+
+<h3>Administrateurs</h3>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Booster ID</th>
+      <th>Nom</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% User.where(is_admin: true).each do |user| %>
+    <tr>
+      <td><%= user.booster_id %></td>
+      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td>
+        <a class="btn btn-danger" href="/backoffice/admins/revoke/<%= user.id %>"><%= fa_icon 'user-times' %>&nbsp;Révoquer</a>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h4>Ajouter administrateur</h4>
+<%= form_tag '/backoffice/admins/add', method: :post do |f| %>
+  <div class="form-group">
+    <label>Booster ID : </label>
+    <%= text_field_tag :booster_id, nil, class: 'form-control' %>
+  </div>
+  <div style="text-align: right; margin-top: 10px;">
+    <button class="btn btn-success" type="submit"><%= fa_icon 'user-plus' %>&nbsp;Ajouter</button>
+  </div>
+<% end %>
+
+<h3>Conférences</h3>
 <div style="text-align: right">
   <a class="btn btn-success" href="/backoffice/new_conference">Nouvelle conférence</a>
 </div>
@@ -20,6 +63,7 @@
       <td><%= conference.event_date.strftime('Le %d/%m/%Y à %R') %></td>
       <td>
         <a class="btn btn-warning" href="/backoffice/edit/<%= conference.id %>"><%= fa_icon 'edit' %>&nbsp;Editer</a>
+        <a class="btn btn-primary" href="/backoffice/reservations/<%= conference.id %>"><%= fa_icon 'users' %>&nbsp;Réservations</a>
         <a class="btn btn-primary" href="/backoffice/feedbacks/<%= conference.id %>"><%= fa_icon 'comment' %>&nbsp;Feedbacks</a>
       </td>
     </tr>

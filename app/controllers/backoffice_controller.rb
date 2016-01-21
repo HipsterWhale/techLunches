@@ -22,6 +22,38 @@ class BackofficeController < ApplicationController
     @conference = Conference.find(params[:id])
   end
 
+  def reservations
+    @conference = Conference.find(params[:id])
+  end
+
+  def delete_reservation
+    Reservation.find(params[:id]).delete
+    redirect_to '/backoffice/home?success=1'
+  end
+
+  def delete_suggestion
+    TopicSuggestion.find(params[:id]).delete
+    redirect_to '/backoffice/home?success=1'
+  end
+
+  def add_admin
+    u = User.find_by_booster_id(params[:booster_id])
+    u.is_admin = true
+    u.save
+    redirect_to '/backoffice/home?success=1'
+  end
+
+  def revoke_admin
+    if User.where(is_admin: true).count > 1
+      u = User.find(params[:id])
+      u.is_admin = false
+      u.save
+      redirect_to '/backoffice/home?success=1'
+    else
+      redirect_to '/backoffice/home?error=last_admin'
+    end
+  end
+
   def create
     begin
       @conference = Conference.create(params.require(:conference).permit(:title, :subtitle, :speaker, :event_date, :description, :sits))

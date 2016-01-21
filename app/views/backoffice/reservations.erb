@@ -1,0 +1,25 @@
+<h4>Réservations</h4>
+<h5><%= @conference.title %></h5>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>#ID</th>
+    <th>Etudiant</th>
+    <th>Date inscription</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @conference.reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.id %></td>
+        <td>(<%= reservation.user.booster_id %>) <%= reservation.user.first_name %> <%= reservation.user.last_name %></td>
+        <td><%= reservation.created_at.strftime('Le %d/%m/%Y à %R:%S') %></td>
+        <td>
+          <a class="btn btn-danger" href="/backoffice/reservations/delete/<%= reservation.id %>"><%= fa_icon 'trash' %>&nbsp;Supprimer</a>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
